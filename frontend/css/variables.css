@@ -1,0 +1,37 @@
+:root {
+    /* Colores principales */
+    --color-primary: #2e7d32;
+    --color-primary-dark: #1B5E20;
+    --color-accent: #b2dfdb;
+    --color-background: #f8fff8;
+    --color-text: #333333;
+    --color-text-light: #fff;
+    --color-text-muted: #666666;
+    --color-border: #dee2e6;
+    --color-hover: #f8f9fa;
+    
+    /* Colores de estado */
+    --color-success: #4CAF50;
+    --color-info: #2196F3;
+    --color-warning: #FF9800;
+    --color-danger: #f44336;
+    
+    /* Redes sociales */
+    --color-facebook: #1877f2;
+    --color-google-hover: #f1f1f1;
+    
+    /* Gradientes */
+    --gradient-primary: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    --gradient-reverse: linear-gradient(90deg, var(--color-accent) 0%, var(--color-primary) 100%);
+    --gradient-login: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    
+    /* Bordes y sombras */
+    --border-radius-sm: 1rem;
+    --border-radius-md: 1.2rem;
+    --border-radius-lg: 1.5rem;
+    --box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    --box-shadow-hover: 0 4px 15px rgba(46, 125, 50, 0.2);
+    
+    /* Animaciones */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - Granja Santa Helena</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/usuario/perfil.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <div class="profile-container">
+        <!-- Botón de regresar fuera del contenedor principal -->
+        <a href="../../../paginadeinicio.html" class="btn return-btn">
+            <i class="bi bi-arrow-left me-2"></i>Regresar
+        </a>
+        
+        <div class="glass-card profile-card animate__animated animate__fadeIn">
+            <!-- Header -->
+            <div class="profile-header text-center mb-4">
+                <div class="cloud1">☁️</div>
+                <div class="cloud2">☁️</div>
+                <div class="animal1">🐖</div>
+                <div class="animal2">🐄</div>
+                <div class="butterfly1">🦋</div>
+                <div class="butterfly2">🦋</div>
+                <div class="rain"></div>
+                <div class="profile-avatar-container">
+                    <img src="../../img/logo.png" alt="Avatar" class="profile-avatar" id="profileAvatar">
+                    <button class="btn avatar-edit-btn" onclick="changeAvatar()">
+                        <i class="bi bi-camera"></i>
+                    </button>
+                </div>
+                <h2 class="neon-text mt-3">Mi Perfil</h2>
+                <p class="text-muted">Administra tu información personal</p>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <ul class="nav nav-pills profile-tabs mb-4" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="info-tab" data-bs-toggle="pill" data-bs-target="#info" type="button" role="tab">
+                        <i class="bi bi-person me-2"></i>Información Personal
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="security-tab" data-bs-toggle="pill" data-bs-target="#security" type="button" role="tab">
+                        <i class="bi bi-shield-lock me-2"></i>Seguridad
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="activity-tab" data-bs-toggle="pill" data-bs-target="#activity" type="button" role="tab">
+                        <i class="bi bi-clock-history me-2"></i>Actividad
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Información Personal -->
+                <div class="tab-pane fade show active" id="info" role="tabpanel">
+                    <form id="profileForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="firstName" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="Ingrese su nombre" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="lastName" class="form-label">Apellido</label>
+                                    <input type="text" class="form-control" id="lastName" placeholder="Ingrese su apellido" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="email" placeholder="ejemplo@email.com" required>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Teléfono</label>
+                                    <input type="tel" class="form-control" id="phone" placeholder="+57 300 123 4567">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="role" class="form-label">Rol</label>
+                                    <select class="form-select" id="role">
+                                        <option value="">Seleccionar rol</option>
+                                        <option value="admin">Administrador</option>
+                                        <option value="supervisor">Supervisor</option>
+                                        <option value="trabajador">Trabajador</option>
+                                        <option value="veterinario">Veterinario</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="bio" class="form-label">Biografía</label>
+                            <textarea class="form-control" id="bio" rows="4" placeholder="Cuéntanos sobre tu experiencia..."></textarea>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn primary-btn">
+                                <i class="bi bi-check-circle me-2"></i>Guardar Cambios
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Seguridad -->
+                <div class="tab-pane fade" id="security" role="tabpanel">
+                    <!-- Cambiar Contraseña -->
+                    <div class="security-section">
+                        <h5><i class="bi bi-key"></i>Cambiar Contraseña</h5>
+                        <form id="passwordForm">
+                            <div class="mb-3">
+                                <label for="currentPassword" class="form-label">Contraseña Actual</label>
+                                <input type="password" class="form-control" id="currentPassword" placeholder="Ingrese su contraseña actual" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="newPassword" class="form-label">Nueva Contraseña</label>
+                                <input type="password" class="form-control" id="newPassword" placeholder="Ingrese nueva contraseña" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme la nueva contraseña" required>
+                            </div>
+                            <button type="submit" class="btn primary-btn">
+                                <i class="bi bi-shield-check me-2"></i>Actualizar Contraseña
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Autenticación de Dos Factores -->
+                    <div class="security-section">
+                        <h5><i class="bi bi-phone"></i>Autenticación de Dos Factores</h5>
+                        <div class="security-option">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6>Verificación por SMS</h6>
+                                    <p>Recibe códigos de seguridad por SMS</p>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="smsAuth">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="security-option">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6>Verificación por Email</h6>
+                                    <p>Recibe códigos de seguridad por correo electrónico</p>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="emailAuth" checked>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actividad -->
+                <div class="tab-pane fade" id="activity" role="tabpanel">
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon success">
+                                <i class="bi bi-check-circle"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h6>Perfil actualizado</h6>
+                                <p>Se actualizó la información personal • Hace 2 horas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon info">
+                                <i class="bi bi-box-arrow-in-right"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h6>Inicio de sesión exitoso</h6>
+                                <p>Acceso desde dispositivo reconocido • Hoy a las 08:30 AM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon warning">
+                                <i class="bi bi-key"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h6>Contraseña actualizada</h6>
+                                <p>Cambio de contraseña por seguridad • Hace 3 días</p>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon info">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h6>Verificación de dos factores activada</h6>
+                                <p>Se habilitó 2FA por email • Hace 1 semana</p>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon success">
+                                <i class="bi bi-person-plus"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h6>Cuenta creada</h6>
+                                <p>Bienvenido al sistema de gestión • Hace 1 mes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para cambiar avatar -->
+    <div class="modal fade" id="avatarModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-camera me-2"></i>Cambiar Avatar
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-3">
+                        <img src="../../img/logo.png" alt="Preview" class="profile-avatar" id="avatarPreview">
+                    </div>
+                    <input type="file" class="form-control" id="avatarInput" accept="image/*">
+                    <div class="form-text">Selecciona una imagen JPG, PNG o GIF menor a 2MB</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn primary-btn" onclick="uploadAvatar()">
+                        <i class="bi bi-upload me-2"></i>Subir Avatar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/usuario/perfil.js"></script>
+</body>
+</html>

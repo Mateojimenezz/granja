@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios - Granja Santa Helena</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/usuario/gestion-usuarios.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <div class="management-container">
+        <!-- Botón de regresar mejorado -->
+        <div class="return-button-container">
+            <a href="../../../paginadeinicio.html" class="btn return-btn animate__animated animate__slideInLeft">
+                <i class="bi bi-arrow-left-circle me-2"></i>
+                <span>Regresar al Inicio</span>
+            </a>
+        </div>
+        
+        <div class="glass-card management-card animate__animated animate__fadeIn"
+            <!-- Header mejorado -->
+            <div class="management-header text-center mb-4">
+                <!-- Efectos visuales de fondo -->
+                <div class="animated-background">
+                    <div class="rain"></div>
+                    <div class="cloud cloud1">☁️</div>
+                    <div class="cloud cloud2">☁️</div>
+                    <div class="cloud cloud3">⛅</div>
+                    <div class="bee bee1">🐝</div>
+                    <div class="bee bee2">🐝</div>
+                    <div class="wind-effect"></div>
+                    <div class="sparkles">✨ ⭐ 💫 🌟</div>
+                </div>
+                
+                <!-- Título principal -->
+                <div class="header-title">
+                    <h1 class="neon-text animate__animated animate__bounceIn">
+                        <i class="bi bi-people-fill me-3"></i>
+                        Gestión de Usuarios
+                    </h1>
+                    <p class="subtitle animate__animated animate__fadeInUp animate__delay-1s">
+                        <i class="bi bi-shield-check me-2"></i>
+                        Administra solicitudes y usuarios de la plataforma
+                    </p>
+                </div>
+                
+                <!-- Estadísticas mejoradas -->
+                <div class="header-stats mt-4 animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="row justify-content-center g-3">
+                        <div class="col-md-3">
+                            <div class="stat-card stat-active">
+                                <div class="stat-icon">
+                                    <i class="bi bi-people-fill"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number" id="activeUsersCount">0</span>
+                                    <span class="stat-label">Usuarios Activos</span>
+                                </div>
+                                <div class="stat-glow"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card stat-pending">
+                                <div class="stat-icon">
+                                    <i class="bi bi-clock-history"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number" id="pendingRequestsCount">0</span>
+                                    <span class="stat-label">Pendientes</span>
+                                </div>
+                                <div class="stat-glow"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card stat-blocked">
+                                <div class="stat-icon">
+                                    <i class="bi bi-person-x-fill"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number" id="blockedUsersCount">0</span>
+                                    <span class="stat-label">Bloqueados</span>
+                                </div>
+                                <div class="stat-glow"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card stat-total">
+                                <div class="stat-icon">
+                                    <i class="bi bi-graph-up-arrow"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number" id="totalUsersCount">0</span>
+                                    <span class="stat-label">Total Sistema</span>
+                                </div>
+                                <div class="stat-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <ul class="nav nav-pills management-tabs mb-4" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pending-tab" data-bs-toggle="pill" data-bs-target="#pending" type="button" role="tab">
+                        <i class="bi bi-clock-history me-2"></i>Solicitudes Pendientes
+                        <span class="badge bg-warning ms-2" id="pendingBadge">0</span>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="users-tab" data-bs-toggle="pill" data-bs-target="#users" type="button" role="tab">
+                        <i class="bi bi-people me-2"></i>Usuarios Registrados
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="blocked-tab" data-bs-toggle="pill" data-bs-target="#blocked" type="button" role="tab">
+                        <i class="bi bi-person-x me-2"></i>Usuarios Bloqueados
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Solicitudes Pendientes -->
+                <div class="tab-pane fade show active" id="pending" role="tabpanel">
+                    <div class="animate__animated animate__fadeInUp">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5><i class="bi bi-hourglass-split me-2"></i>Solicitudes de Registro</h5>
+                            <div class="search-box">
+                                <div class="input-group">
+                                    <input type="text" class="form-control glass-input" placeholder="Buscar solicitudes..." id="searchPending">
+                                    <button class="btn btn-outline-secondary" type="button">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pending-requests" id="pendingRequestsList">
+                            <!-- Los datos se cargarán dinámicamente desde la base de datos -->
+                            <div class="text-center loading-state" id="pendingLoading">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Cargando...</span>
+                                </div>
+                                <p class="mt-2">Cargando solicitudes pendientes...</p>
+                            </div>
+                        </div>
+
+                        <div class="bulk-actions mt-4" style="display: none;" id="bulkActions">
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-success" onclick="approveAll()">
+                                    <i class="bi bi-check-all me-2"></i>Aprobar Todas
+                                </button>
+                                <button class="btn btn-danger" onclick="rejectAll()">
+                                    <i class="bi bi-x-circle me-2"></i>Rechazar Todas
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4" style="display: none;" id="saveConfigBtn">
+                            <button type="button" class="btn primary-btn" onclick="saveUserManagementSettings()" style="background: linear-gradient(135deg, #2e7d32, #1B5E20) !important; color: white !important;">
+                                <i class="bi bi-check-circle me-2"></i>Guardar Configuración
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Usuarios Registrados -->
+                <div class="tab-pane fade" id="users" role="tabpanel">
+                    <div class="animate__animated animate__fadeInUp">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5><i class="bi bi-people me-2"></i>Usuarios Activos</h5>
+                            <div class="d-flex gap-2">
+                                <div class="search-box">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control glass-input" placeholder="Buscar usuarios..." id="searchUsers">
+                                        <button class="btn btn-outline-secondary" type="button">
+                                            <i class="bi bi-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <select class="form-select glass-input" id="roleFilter" style="width: auto;">
+                                    <option value="">Todos los roles</option>
+                                    <option value="admin">Administrador</option>
+                                    <option value="supervisor">Supervisor</option>
+                                    <option value="veterinario">Veterinario</option>
+                                    <option value="trabajador">Trabajador</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="users-list" id="usersList">
+                            <!-- Los datos se cargarán dinámicamente desde la base de datos -->
+                            <div class="text-center loading-state" id="usersLoading">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Cargando...</span>
+                                </div>
+                                <p class="mt-2">Cargando usuarios...</p>
+                            </div>
+                        </div>
+
+                        <!-- Paginación -->
+                        <nav aria-label="Paginación de usuarios" class="mt-4">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Siguiente</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Usuarios Bloqueados -->
+                <div class="tab-pane fade" id="blocked" role="tabpanel">
+                    <div class="animate__animated animate__fadeInUp">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5><i class="bi bi-person-x me-2"></i>Usuarios Bloqueados</h5>
+                            <div class="search-box">
+                                <div class="input-group">
+                                    <input type="text" class="form-control glass-input" placeholder="Buscar bloqueados..." id="searchBlocked">
+                                    <button class="btn btn-outline-secondary" type="button">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="blocked-users" id="blockedUsersList">
+                            <!-- Los datos se cargarán dinámicamente desde la base de datos -->
+                            <div class="text-center loading-state" id="blockedLoading">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Cargando...</span>
+                                </div>
+                                <p class="mt-2">Cargando usuarios bloqueados...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para ver detalles de solicitud -->
+    <div class="modal fade" id="requestDetailsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content glass-card">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalles de la Solicitud</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Contenido dinámico -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success">Aprobar</button>
+                    <button type="button" class="btn btn-danger">Rechazar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para cambiar rol -->
+    <div class="modal fade" id="changeRoleModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content glass-card">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cambiar Rol de Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-floating">
+                        <select class="form-select glass-input" id="newRole">
+                            <option value="admin">Administrador</option>
+                            <option value="supervisor">Supervisor</option>
+                            <option value="veterinario">Veterinario</option>
+                            <option value="trabajador">Trabajador</option>
+                        </select>
+                        <label for="newRole">Nuevo Rol</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn primary-btn" onclick="saveRoleChange()">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/usuario/gestion-usuarios.js"></script>
+</body>
+</html>

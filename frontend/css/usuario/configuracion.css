@@ -1,0 +1,996 @@
+/* Configuración - CSS como Perfil */
+
+/* Reset y Layout Base */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #4CAF50 100%);
+    background-attachment: fixed;
+}
+
+/* Container Principal */
+.config-container {
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+
+/* Botón de Regresar */
+.return-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--color-primary);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.return-btn:hover {
+    background: white;
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Tarjeta Principal - Como Perfil */
+.config-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    min-height: auto;
+}
+
+/* Header de Configuración */
+.config-header {
+    background: linear-gradient(135deg, var(--color-primary), #4CAF50);
+    color: white;
+    padding: 60px 30px 40px;
+    text-align: center;
+    position: relative;
+    margin: -20px -20px 0 -20px;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+/* Sol animado */
+.config-header::before {
+    content: '☀️';
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    animation: sun-move 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* Plantas creciendo */
+.config-header::after {
+    content: '🌱 🌿 🌾 🌻 🌱';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    font-size: 20px;
+    letter-spacing: 30px;
+    animation: plants-grow 4s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* Nubes flotantes */
+.config-header .cloud1 {
+    position: absolute;
+    top: 15px;
+    left: -50px;
+    font-size: 25px;
+    animation: cloud-float-1 12s linear infinite;
+    z-index: 1;
+}
+
+.config-header .cloud2 {
+    position: absolute;
+    top: 40px;
+    left: -80px;
+    font-size: 20px;
+    animation: cloud-float-2 15s linear infinite;
+    z-index: 1;
+}
+
+/* Animales de granja */
+.config-header .animal1 {
+    position: absolute;
+    bottom: 20px;
+    left: -30px;
+    font-size: 18px;
+    animation: animal-walk-1 10s linear infinite;
+    z-index: 1;
+}
+
+.config-header .animal2 {
+    position: absolute;
+    bottom: 25px;
+    right: -30px;
+    font-size: 16px;
+    animation: animal-walk-2 14s linear infinite;
+    z-index: 1;
+}
+
+/* Tractores trabajando */
+.config-header .tractor {
+    position: absolute;
+    bottom: 35px;
+    left: -40px;
+    font-size: 20px;
+    animation: tractor-work 16s linear infinite;
+    z-index: 1;
+}
+
+@keyframes sun-move {
+    0% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-20px) rotate(90deg); }
+    50% { transform: translateX(-40px) rotate(180deg); }
+    75% { transform: translateX(-20px) rotate(270deg); }
+    100% { transform: translateX(0) rotate(360deg); }
+}
+
+@keyframes plants-grow {
+    0%, 100% { transform: scaleY(0.8) translateY(5px); }
+    50% { transform: scaleY(1.2) translateY(-5px); }
+}
+
+@keyframes cloud-float-1 {
+    0% { transform: translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateX(calc(100vw + 100px)); opacity: 0; }
+}
+
+@keyframes cloud-float-2 {
+    0% { transform: translateX(0); opacity: 0; }
+    15% { opacity: 0.7; }
+    85% { opacity: 0.7; }
+    100% { transform: translateX(calc(100vw + 120px)); opacity: 0; }
+}
+
+@keyframes animal-walk-1 {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(100vw + 60px)); }
+}
+
+@keyframes animal-walk-2 {
+    0% { transform: translateX(0) scaleX(-1); }
+    100% { transform: translateX(calc(-100vw - 60px)) scaleX(-1); }
+}
+
+/* Abejas trabajando */
+.config-header .bee1 {
+    position: absolute;
+    top: 25px;
+    left: 60px;
+    font-size: 14px;
+    animation: bee-work-1 12s ease-in-out infinite;
+    z-index: 1;
+}
+
+.config-header .bee2 {
+    position: absolute;
+    top: 45px;
+    right: 90px;
+    font-size: 12px;
+    animation: bee-work-2 15s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* Flores creciendo */
+.config-header .flowers {
+    position: absolute;
+    bottom: 5px;
+    left: 20%;
+    right: 20%;
+    font-size: 16px;
+    animation: flowers-bloom 6s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* Viento moviendo todo */
+.config-header .wind-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.03) 50%,
+        transparent 100%
+    );
+    animation: wind-blow 5s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes bee-work-1 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(150px, -10px) rotate(45deg); }
+    50% { transform: translate(300px, 15px) rotate(-30deg); }
+    75% { transform: translate(200px, -20px) rotate(60deg); }
+}
+
+@keyframes bee-work-2 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    30% { transform: translate(-120px, 25px) rotate(-45deg); }
+    60% { transform: translate(-200px, -15px) rotate(30deg); }
+    90% { transform: translate(-80px, 20px) rotate(-60deg); }
+}
+
+@keyframes flowers-bloom {
+    0%, 100% { 
+        transform: scale(0.9);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+@keyframes wind-blow {
+    0%, 100% { transform: translateX(0) skewX(0deg); }
+    50% { transform: translateX(20px) skewX(2deg); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+@keyframes bubbles {
+    0% { opacity: 1; transform: translateY(0); }
+    50% { opacity: 0.7; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+/* Partículas adicionales */
+.config-header .sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: sparkle 3s linear infinite;
+}
+
+.config-header .sparkle:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.config-header .sparkle:nth-child(2) {
+    top: 40%;
+    left: 90%;
+    animation-delay: 1s;
+}
+
+.config-header .sparkle:nth-child(3) {
+    top: 80%;
+    left: 20%;
+    animation-delay: 2s;
+}
+
+.config-header .sparkle:nth-child(4) {
+    top: 60%;
+    left: 80%;
+    animation-delay: 1.5s;
+}
+
+.neon-text {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: none;
+    position: relative;
+    z-index: 2;
+}
+
+.config-header p {
+    margin: 8px 0 0;
+    opacity: 0.9;
+    font-size: 16px;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+/* Navegación de Pestañas - Como Perfil */
+.config-tabs {
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    border-radius: 0;
+    border: none;
+}
+
+.config-tabs .nav-link {
+    background: transparent;
+    border: none;
+    color: #6c757d;
+    padding: 20px 25px;
+    font-weight: 500;
+    border-radius: 0;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+
+.config-tabs .nav-link:hover {
+    color: var(--color-primary);
+    background: rgba(46, 125, 50, 0.05);
+}
+
+.config-tabs .nav-link.active {
+    color: var(--color-primary);
+    background: white;
+    border-bottom-color: var(--color-primary);
+    transform: none;
+    box-shadow: none;
+}
+
+/* Contenido de Pestañas */
+.tab-content {
+    padding: 30px;
+    border-radius: 0 0 20px 20px;
+    background: white;
+}
+
+.tab-pane {
+    min-height: auto;
+    padding-bottom: 0;
+}
+
+/* Secciones de Configuración - Estilo Limpio */
+.config-section {
+    margin-bottom: 35px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+.config-section:last-child {
+    margin-bottom: 20px;
+}
+
+.config-section h5 {
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(46, 125, 50, 0.1);
+}
+
+/* Items de Configuración */
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+.setting-info {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.setting-info h6 {
+    color: #212529;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.setting-info p {
+    color: #6c757d;
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Controles de Configuración */
+.config-select {
+    min-width: 200px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.config-select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+    outline: none;
+}
+
+/* Contenedor del Switch Mejorado */
+.form-check {
+    display: flex !important;
+    align-items: center !important;
+    padding: 8px 0 !important;
+    margin: 0 !important;
+}
+
+.form-switch .form-check-input {
+    margin-left: 0 !important;
+}
+
+/* Switches - Estilo iPhone Mejorado */
+.form-check-input {
+    width: 48px !important;
+    height: 26px !important;
+    border-radius: 16px !important;
+    border: 2px solid #000 !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    background-color: #6c757d !important;
+    background-image: none !important;
+    position: relative !important;
+    cursor: pointer !important;
+    box-shadow: 
+        inset 0 1px 3px rgba(0, 0, 0, 0.2),
+        0 1px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.form-check-input:before {
+    content: '' !important;
+    position: absolute !important;
+    top: 2px !important;
+    left: 2px !important;
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 
+        0 1px 4px rgba(0, 0, 0, 0.3),
+        inset 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.form-check-input:checked {
+    background: linear-gradient(145deg, #4CAF50, #2e7d32) !important;
+    border-color: #000 !important;
+    box-shadow: 
+        inset 0 1px 3px rgba(0, 0, 0, 0.2),
+        0 1px 6px rgba(76, 175, 80, 0.3),
+        0 0 0 1px rgba(76, 175, 80, 0.1) !important;
+}
+
+.form-check-input:checked:before {
+    transform: translateX(22px) !important;
+    background: linear-gradient(145deg, #ffffff, #f8f8f8) !important;
+    box-shadow: 
+        0 1px 4px rgba(0, 0, 0, 0.3),
+        inset 0 1px 2px rgba(255, 255, 255, 0.9),
+        0 0 0 1px rgba(76, 175, 80, 0.2) !important;
+}
+
+.form-check-input:focus {
+    border-color: #000 !important;
+    box-shadow: 
+        inset 0 1px 3px rgba(0, 0, 0, 0.2),
+        0 1px 6px rgba(0, 0, 0, 0.1),
+        0 0 0 2px rgba(76, 175, 80, 0.2) !important;
+    outline: none !important;
+}
+
+.form-check-input:hover {
+    transform: scale(1.03) !important;
+    box-shadow: 
+        inset 0 1px 3px rgba(0, 0, 0, 0.2),
+        0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.form-check-input:checked:hover {
+    box-shadow: 
+        inset 0 1px 3px rgba(0, 0, 0, 0.2),
+        0 2px 8px rgba(76, 175, 80, 0.4),
+        0 0 0 1px rgba(76, 175, 80, 0.1) !important;
+}
+
+.form-check-label {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #495057 !important;
+    margin-left: 12px !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important;
+    user-select: none !important;
+}
+
+.form-check-input:checked + .form-check-label {
+    color: #2e7d32 !important;
+    font-weight: 700 !important;
+}
+
+/* Animaciones adicionales para los switches */
+@keyframes switchOn {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes switchOff {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+.form-check-input:checked {
+    animation: switchOn 0.3s ease-out;
+}
+
+.form-check-input:not(:checked) {
+    animation: switchOff 0.3s ease-out;
+}
+
+/* Efecto de ondas al hacer clic */
+.form-check-input:active {
+    transform: scale(0.98) !important;
+}
+
+.form-check-input:active:before {
+    transform: scale(1.1) !important;
+}
+
+/* Botones - Verde Claro */
+.primary-btn,
+.btn.primary-btn,
+.config-save-btn {
+    background: linear-gradient(135deg, #2e7d32, #1B5E20) !important;
+    border: none !important;
+    color: white !important;
+    padding: 12px 30px !important;
+    border-radius: 25px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3) !important;
+}
+
+.primary-btn:hover,
+.btn.primary-btn:hover,
+.primary-btn:focus,
+.btn.primary-btn:focus,
+.primary-btn:active,
+.btn.primary-btn:active,
+.config-save-btn:hover,
+.config-save-btn:focus,
+.config-save-btn:active {
+    background: linear-gradient(135deg, #1B5E20, #2e7d32) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4) !important;
+    color: white !important;
+    border: none !important;
+    outline: none !important;
+}
+
+/* Botón de guardar configuración */
+.text-center {
+    margin-top: 25px !important;
+    margin-bottom: 15px !important;
+    padding: 20px 0 !important;
+    border-top: 1px solid #e9ecef !important;
+}
+
+.secondary-btn {
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    color: var(--color-primary);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.secondary-btn:hover {
+    background: rgba(76, 175, 80, 0.2);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-1px);
+}
+
+.danger-btn {
+    background: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    color: #dc3545;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.danger-btn:hover {
+    background: rgba(220, 53, 69, 0.2);
+    border-color: #dc3545;
+    color: #dc3545;
+    transform: translateY(-1px);
+}
+
+/* Progress Bar */
+.progress {
+    height: 8px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, var(--color-primary), #4CAF50);
+    transition: width 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .config-container {
+        padding: 10px;
+        padding-top: 60px;
+        padding-bottom: 20px;
+    }
+    
+    .config-card {
+        margin: 0;
+    }
+    
+    .return-btn {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+    
+    .config-header {
+        padding: 30px 20px 25px;
+    }
+    
+    .neon-text {
+        font-size: 24px;
+    }
+    
+    .config-tabs .nav-link {
+        padding: 15px 20px;
+        font-size: 14px;
+    }
+    
+    .setting-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .setting-info {
+        margin-right: 0;
+    }
+    
+    .config-select {
+        min-width: 100%;
+    }
+    
+    .text-center {
+        margin-top: 20px !important;
+        margin-bottom: 15px !important;
+        padding: 15px 0 !important;
+    }
+    
+    .tab-content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .config-tabs {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .config-tabs .nav-link {
+        margin: 2px 0;
+        text-align: center;
+    }
+}
+.setting-item {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+.setting-info {
+    flex: 1;
+}
+
+.setting-info h6 {
+    margin-bottom: 5px;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.setting-info p {
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.config-select {
+    width: 200px;
+    margin-left: 20px;
+}
+
+/* Glass Input */
+.glass-input {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 10px !important;
+    color: var(--text-dark) !important;
+    transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.25) !important;
+}
+
+/* Primary Button */
+.primary-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+    color: white;
+}
+
+/* Estilos de botones adicionales */
+
+/* Privacy Actions */
+.privacy-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.privacy-actions .btn {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: 500;
+}
+
+/* Storage Info */
+.storage-info {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.storage-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    color: var(--text-dark);
+}
+
+.storage-item span:first-child {
+    font-weight: 500;
+}
+
+.storage-item span:last-child {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.progress {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+    border-radius: 4px;
+}
+
+/* System Info */
+.system-info {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-dark);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-item span:first-child {
+    font-weight: 500;
+}
+
+.info-item span:last-child {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+}
+
+/* Neon Text Effect */
+.neon-text {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    font-family: 'Calistoga', sans-serif;
+}
+
+/* Modal Glass Effect */
+.modal-content.glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+}
+
+/* Button Variants */
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-warning {
+    color: var(--warning-color);
+    border-color: var(--warning-color);
+}
+
+.btn-outline-warning:hover {
+    background-color: var(--warning-color);
+    border-color: var(--warning-color);
+}
+
+.btn-outline-secondary {
+    color: var(--text-muted);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-outline-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--text-dark);
+}
+
+/* Efecto de lluvia */
+.config-header .rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 98px,
+        rgba(173, 216, 230, 0.1) 100px,
+        rgba(173, 216, 230, 0.1) 102px
+    );
+    animation: rain-fall 2s linear infinite;
+    opacity: 0;
+    z-index: 1;
+}
+
+@keyframes rain-fall {
+    0% { 
+        background-position: 0 0;
+        opacity: 0;
+    }
+    10% { opacity: 0.3; }
+    90% { opacity: 0.3; }
+    100% { 
+        background-position: 0 20px;
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .config-card {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .config-tabs .nav-link {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    
+    .setting-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .config-select {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    .privacy-actions {
+        flex-direction: column;
+    }
+    
+    .config-section {
+        padding: 15px;
+    }
+}
