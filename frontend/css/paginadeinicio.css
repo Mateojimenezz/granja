@@ -30,16 +30,18 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    display: none !important;
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+    pointer-events: none;
     transition: all 0.3s ease;
 }
 
 .sidebar-overlay.show {
-    opacity: 1 !important;
-    visibility: visible !important;
-    display: block !important;
+    opacity: 1;
+    visibility: visible;
+    display: block;
+    pointer-events: auto;
 }
 
 /* Sidebar Styles */
@@ -52,29 +54,29 @@ body {
     width: var(--sidebar-width);
     background: white;
     box-shadow: 2px 0 5px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease !important;
+    transition: transform 0.3s ease;
     z-index: 1000;
     display: flex;
     flex-direction: column;
-    position: fixed !important;
+    position: fixed;
     height: 100vh;
     left: 0;
     top: 0;
-    transform: translateX(0) !important;
+    transform: translateX(0);
+}
+
+.sidebar.hidden {
+    transform: translateX(-280px);
 }
 
 @media (max-width: 992px) {
     .sidebar {
-        transform: translateX(-100%) !important;
+        transform: translateX(-100%);
     }
     
     .sidebar.show {
-        transform: translateX(0) !important;
+        transform: translateX(0);
     }
-}
-
-.sidebar.hidden {
-    transform: translateX(-280px) !important;
 }
 
 .sidebar-header {
@@ -261,8 +263,8 @@ body {
 
 @media (max-width: 992px) {
     .main-content {
-        margin-left: 0 !important;
-        width: 100% !important;
+        margin-left: 0;
+        width: 100%;
         padding: 15px;
     }
 }
@@ -599,21 +601,22 @@ body {
     }
     
     .sidebar.show {
-        transform: translateX(0) !important;
+        transform: translateX(0);
     }
     
     .sidebar-overlay {
-        display: none !important;
+        display: none;
     }
     
     .sidebar-overlay.show {
-        display: block !important;
+        display: block;
+        pointer-events: auto;
     }
     
     .main-content {
-        margin-left: 0 !important;
-        width: 100% !important;
-        padding: 15px !important;
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
     }
     
     .dashboard-content {
