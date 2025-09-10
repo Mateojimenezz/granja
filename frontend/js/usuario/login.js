@@ -23,7 +23,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         
         // Simulación de respuesta exitosa
         setTimeout(() => {
-            window.location.href = '../../../index.html';
+            window.location.href = '../../../paginadeinicio.html';
         }, 1000);
     } catch (error) {
         console.error('Error de autenticación:', error);

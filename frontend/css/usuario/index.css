@@ -1,15 +1,4 @@
-:root {
-  --color-primary: #2e7d32;
-  --color-primary-dark: #388e3c;
-  --color-accent: #b2dfdb;
-  --color-background: #f8fff8;
-  --color-text: #fff;
-  --border-radius-sm: 1rem;
-  --border-radius-md: 1.2rem;
-  --border-radius-lg: 1.5rem;
-  --box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-  --transition: all 0.3s ease;
-}
+/* Variables importadas desde variables.css - eliminar duplicación */
 
 /* === Footer Mejorado === */
 .footer {
