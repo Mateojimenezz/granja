@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "granja-santa-helena",
   "version": "1.0.0",
@@ -14,3 +15,21 @@
   },
   "keywords": ["granja", "react", "express", "mysql", "nodejs"]
 }
+=======
+{
+  "name": "granja-santa-helena",
+  "version": "1.0.0",
+  "description": "Sistema completo de gestión de granja con React + Express",
+  "scripts": {
+    "dev:backend": "cd backend && npm start",
+    "dev:frontend": "cd frontend-react && npm start",
+    "setup:db": "cd backend && node setup-db-new.js",
+    "install:all": "npm run install:backend && npm run install:frontend",
+    "install:backend": "cd backend && npm install",
+    "install:frontend": "cd frontend-react && npm install",
+    "build:frontend": "cd frontend-react && npm run build",
+    "start": "npm run build:frontend && npm run dev:backend"
+  },
+  "keywords": ["granja", "react", "express", "mysql", "nodejs"]
+}
+>>>>>>> 98432a426115134955e9314f86f0da2ef6112aa9
