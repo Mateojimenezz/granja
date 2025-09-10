@@ -176,7 +176,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Cerrar sidebar en móvil después de hacer clic
                 if (window.innerWidth < 992) {
                     sidebar.classList.remove('show');
-                    sidebarOverlay.classList.remove('show');
+                    clearOverlay();
+                    updateBodyScroll();
                 }
             });
         });
@@ -295,20 +296,41 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === 'Escape' && sidebar.classList.contains('show')) {
             sidebar.classList.remove('show');
             clearOverlay();
-            document.body.style.overflow = 'auto';
+            updateBodyScroll();
         }
     });
+
+    // Función para debug - mostrar información actual
+    function debugSidebarState() {
+        const isMobile = window.innerWidth < 992;
+        console.log('=== SIDEBAR DEBUG INFO ===');
+        console.log('Screen width:', window.innerWidth);
+        console.log('Is mobile:', isMobile);
+        console.log('Sidebar classes:', sidebar.className);
+        console.log('Overlay classes:', sidebarOverlay ? sidebarOverlay.className : 'No overlay');
+        console.log('Sidebar transform:', getComputedStyle(sidebar).transform);
+        console.log('Body overflow:', document.body.style.overflow);
+        console.log('=========================');
+    }
+
+    // Agregar debug en modo desarrollo
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        window.debugSidebar = debugSidebarState;
+        console.log('Debug mode enabled. Use debugSidebar() in console to check state.');
+    }
 
     // Prevenir scroll del body cuando el sidebar está abierto en móvil
     function updateBodyScroll() {
         const isMobile = window.innerWidth < 992;
-        const sidebarOpen = sidebar.classList.contains('show');
+        const sidebarOpen = sidebar && sidebar.classList.contains('show');
         
         if (isMobile && sidebarOpen) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'auto';
         }
+        
+        console.log('Body scroll updated - Mobile:', isMobile, 'Sidebar open:', sidebarOpen, 'Overflow:', document.body.style.overflow);
     }
 
     // Inicializar estado según el tamaño de pantalla
