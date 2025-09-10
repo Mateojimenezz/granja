@@ -136,3 +136,25 @@
     transform: scale(1.05);
     filter: drop-shadow(0 0 10px var(--color-accent));
 }
+
+/* Botón de registro específico */
+.registro-btn {
+    background: rgba(76, 175, 80, 0.2);
+    border: 1px solid rgba(76, 175, 80, 0.4);
+    backdrop-filter: blur(10px);
+    color: var(--color-text-light);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.registro-btn:hover {
+    background: rgba(76, 175, 80, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    color: var(--color-text-light);
+}

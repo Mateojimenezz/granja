@@ -717,6 +717,25 @@ body {
     text-align: center;
     padding: 0.8rem;
   }
+  
+  /* Mejorar botón Ingresar en móvil */
+  .ingresar-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(46, 125, 50, 0.9) !important;
+    border: 1px solid #2e7d32 !important;
+    color: white !important;
+  }
+  
+  .ingresar-btn:hover {
+    background: rgba(46, 125, 50, 1) !important;
+    transform: none;
+    color: white !important;
+  }
 }
 
 @media (max-width: 576px) {
@@ -728,8 +747,18 @@ body {
     width: 70px;
   }
   
-  .ingresar, .ingresar1 {
-    padding: 0.3rem 1rem;
+  .ingresar-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    margin-top: 0.8rem;
+  }
+  
+  .navbar-collapse {
+    padding: 0.8rem;
+  }
+  
+  .nav-efecto {
+    padding: 0.6rem;
     font-size: 0.9rem;
   }
 }
