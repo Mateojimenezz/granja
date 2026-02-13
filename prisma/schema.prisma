@@ -1,0 +1,162 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  OPERADOR
+  VETERINARIO
+}
+
+enum SubscriptionPlan {
+  PORCINO
+  PISCICOLA
+  GANADERO
+  COMBO
+  EMPRESARIAL
+}
+
+enum EventType {
+  INSEMINACION
+  DIAGNOSTICO_GESTACION
+  PARTO
+  VACUNACION
+  PESAJE
+  TRASLADO
+}
+
+enum PorcinoPhase {
+  MATERNIDAD
+  LACTANCIA
+  PRECEBO
+  CEBA
+}
+
+enum BodegaCategory {
+  ALIMENTO
+  MEDICAMENTO
+  INSUMO
+  SEMEN
+}
+
+model Farm {
+  id            String          @id @default(cuid())
+  name          String
+  location      String?
+  users         User[]
+  subscriptions Subscription[]
+  porcinos      PorcinoAnimal[]
+  estanques     PiscicolaEstanque[]
+  ganado        GanadoAnimal[]
+  bodegaItems   BodegaItem[]
+  sales         Sale[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  fullName  String
+  role      Role
+  farmId    String
+  farm      Farm     @relation(fields: [farmId], references: [id])
+  events    PorcinoEvent[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Subscription {
+  id        String           @id @default(cuid())
+  farmId    String
+  farm      Farm             @relation(fields: [farmId], references: [id])
+  plan      SubscriptionPlan
+  active    Boolean          @default(true)
+  startsAt  DateTime         @default(now())
+  endsAt    DateTime?
+  stripeRef String?
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+}
+
+model PorcinoAnimal {
+  id        String         @id @default(cuid())
+  farmId    String
+  farm      Farm           @relation(fields: [farmId], references: [id])
+  code      String
+  type      String
+  phase     PorcinoPhase
+  birthDate DateTime?
+  lote      String?
+  events    PorcinoEvent[]
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+}
+
+model PorcinoEvent {
+  id               String       @id @default(cuid())
+  farmId           String
+  farm             Farm         @relation(fields: [farmId], references: [id])
+  animalId         String
+  animal           PorcinoAnimal @relation(fields: [animalId], references: [id])
+  userId           String
+  user             User         @relation(fields: [userId], references: [id])
+  type             EventType
+  date             DateTime
+  location         String
+  notes            String?
+  bodegaItemId     String?
+  bodegaQuantity   Int?
+  createdAt        DateTime     @default(now())
+}
+
+model PiscicolaEstanque {
+  id        String   @id @default(cuid())
+  farmId    String
+  farm      Farm     @relation(fields: [farmId], references: [id])
+  name      String
+  capacity  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model GanadoAnimal {
+  id        String   @id @default(cuid())
+  farmId    String
+  farm      Farm     @relation(fields: [farmId], references: [id])
+  code      String
+  breed     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BodegaItem {
+  id        String         @id @default(cuid())
+  farmId    String
+  farm      Farm           @relation(fields: [farmId], references: [id])
+  name      String
+  category  BodegaCategory
+  stock     Int            @default(0)
+  unit      String
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+}
+
+model Sale {
+  id          String   @id @default(cuid())
+  farmId      String
+  farm        Farm     @relation(fields: [farmId], references: [id])
+  module      String
+  referenceId String?
+  quantity    Int
+  unitPrice   Float
+  total       Float
+  date        DateTime @default(now())
+  createdAt   DateTime @default(now())
+}

@@ -1,62 +1,70 @@
-# 🐷 Granja Santa Helena - Sistema de Gestión
+# Granja SaaS Monorepo
 
-Sistema completo de gestión para granjas porcinas con tecnología moderna.
+Plataforma SaaS agropecuaria modular con arquitectura lista para escalar por suscripciones.
 
-## 📁 Estructura del Proyecto
+## Stack
+- **Frontend:** Next.js + TypeScript + TailwindCSS
+- **Backend:** NestJS + JWT + Guards (roles/suscripción)
+- **DB:** PostgreSQL + Prisma
+- **Arquitectura:** Monorepo con workspaces
+
+## Estructura
 
 ```
-granja/
-├── index.html              # 🏠 Landing Page (página principal pública)
-├── paginadeinicio.html     # 📊 Dashboard administrativo (usuarios logueados)
-├── frontend/
-│   ├── css/
-│   │   ├── variables.css   # 🎨 Variables CSS globales
-│   │   ├── components.css  # 🧩 Componentes reutilizables
-│   │   ├── paginadeinicio.css
-│   │   └── usuario/        # Estilos específicos por módulo
-│   ├── js/
-│   │   ├── common.js       # 🔧 Funciones comunes
-│   │   └── usuario/        # Scripts específicos por módulo
-│   ├── img/               # 🖼️ Imágenes optimizadas
-│   └── pages/
-│       └── usuario/       # Páginas del módulo de usuarios
-├── backend/               # 🚀 API y servidor
-└── database/             # 🗄️ Scripts de base de datos
+/
+├── apps/
+│   ├── web   # Next.js
+│   └── api   # NestJS
+├── prisma/
+│   └── schema.prisma
+├── .env
+└── README.md
 ```
 
-## 🌐 Páginas Principales
+## Módulos
+- SaaS multiusuario (registro/login/JWT)
+- Suscripciones (PORCINO, PISCICOLA, GANADERO, COMBO, EMPRESARIAL)
+- Landing comercial SaaS
+- Dashboard interno modular
+- **Porcino funcional:** animales + eventos + métricas + descuento de bodega
+- Piscícola (estructura base)
+- Ganadero (estructura base)
+- Bodega transversal
+- Ventas
+- Reportes básicos
 
-- **`index.html`** - Landing page público (presentación de la granja)
-- **`paginadeinicio.html`** - Panel administrativo para usuarios autenticados
-- **`frontend/pages/usuario/login.html`** - Página de inicio de sesión
+## Variables de entorno
+Configurar `.env`:
 
-## 🎯 Flujo de Navegación
+```env
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/granja_saas?schema=public"
+JWT_SECRET="super-secret-key"
+JWT_EXPIRES_IN="1d"
+NEXT_PUBLIC_API_URL="http://localhost:4000"
+PORT=4000
+```
 
-1. **Visitante** → `index.html` (landing)
-2. **Clic en "Ingresar"** → `login.html`
-3. **Login exitoso** → `paginadeinicio.html`
+## Ejecutar
 
-## ✨ Características
+```bash
+npm install
+npx prisma migrate dev
+npm run dev
+```
 
-- ✅ **Código limpio** - Sin duplicaciones
-- ✅ **CSS organizado** - Variables centralizadas, componentes reutilizables
-- ✅ **Responsive** - Bootstrap 5
-- ✅ **Efectos modernos** - Glass morphism, animaciones
-- ✅ **Optimizado** - Imágenes y archivos innecesarios eliminados
+- API en `http://localhost:4000`
+- Web en `http://localhost:3000`
 
-## 🚀 Tecnologías
+## Endpoints clave
+- `POST /auth/register`
+- `POST /auth/login`
+- `GET /auth/me`
+- `GET/POST /porcino/animals`
+- `GET/POST /porcino/events`
+- `GET /porcino/metrics`
+- `GET/POST /bodega/items`
+- `GET/POST /sales`
+- `GET /reports/summary`
 
-- **Frontend**: HTML5, CSS3, Bootstrap 5, JavaScript
-- **Efectos**: Glass morphism, gradientes, animaciones CSS
-- **Icons**: Bootstrap Icons
-- **Fonts**: Google Fonts (Poppins, Calistoga)
-
-## 📱 Responsive Design
-
-El sistema está optimizado para:
-- 📱 Móviles (< 768px)
-- 💻 Tablets (768px - 1024px) 
-- 🖥️ Desktop (> 1024px)
-
----
-*Desarrollado para la modernización de granjas porcinas* 🐷
+## Stripe (futuro)
+El modelo `Subscription` ya contempla `stripeRef` para futura sincronización con Stripe Billing.
